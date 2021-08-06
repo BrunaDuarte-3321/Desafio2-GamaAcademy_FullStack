@@ -33,7 +33,9 @@ Na primeira parte do desafio, colocamos  em prática, conceitos básicos, mas im
 As seguintes ferramentas serão usadas na construção do projeto:
 
 - [JavaScript]
+### Grupo 3
+⭐️ -Alexandre Chaves;
+⭐️ -Bruna Duarte;
+⭐️ -Fabiano Soares.
 
-<a href="https://www.linkedin.com/in/bruna-duarte-7062451a3/" target="_blank">
-  <img align="right" src="https://i.ibb.co/Kx2GSrT/linkedin.png" width="48px" height="48px">
-</a>
+
