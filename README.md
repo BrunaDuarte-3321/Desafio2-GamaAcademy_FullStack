@@ -2,7 +2,7 @@
 <h5 align="center">Dev FullStack</h5>
 <h5 align="center">Logica de programação com JavaScript</h5>
 <p align="left" >
-Na primeira parte do desafio, coloquei em prática, conceitos básicos, mas importantes de manipulação de array de objetos. Para resolução dos pontos solicitado, pude usar:</p>
+Na primeira parte do desafio, colocamos  em prática, conceitos básicos, mas importantes de manipulação de array de objetos. Para resolução dos pontos solicitado, foi utilizamos:</p>
 
 - [x] Funções;
 - [x] Arrow Functions;
