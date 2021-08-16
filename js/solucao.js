@@ -1238,14 +1238,86 @@ solucao9();
 
 /* 10. Valor do ticket médio dos produtos da empresa (basicamente o valor total do inventário dividido pelo número de itens - considere TODOS os produtos, porém considere apenas 1 exemplar por produto) */
 
-function solucao10( valorMedioTicket,  ticket = 0){
+function solucao10( ticket = 0){
     listaProdutos.forEach((item) =>{
     ticket++
-    })
-
-    
+    });
 
     return console.log(`O valor do ticket médio é: ${(estoque /ticket).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`)
 }
 
 solucao10();
+
+/* 11. Somatória de itens por departamento (você deverá retornar um objeto contendo o nome do departamento e o total de itens nele - Novamente considere os produtos “EM ESTOQUE” - e é apenas a somatória da quantidade de itens) */
+
+function solucao11(totalEstoque){
+
+    var somaEstoque = (depEstoque) => listaProdutos.filter((prod) => prod.departamento.idDepto === depEstoque).reduce((soma,acc) => soma + acc.qtdEstoque, 0);
+
+    var newLista = [];
+
+    listaProdutos.map((prod) => {
+        newLista.push({
+            id: prod.departamento.idDepto,
+            departamento : prod.departamento.nomeDepto,
+            estoque: somaEstoque(prod.departamento.idDepto)
+        });
+    });
+
+    var limpaLista = (produto, ids) => [...new Map(produto.map(item => [ids(item), item])).values()];
+    console.log(limpaLista(newLista, item => item.id));
+    return totalEstoque;
+}
+
+solucao11();
+
+/* 12 . Valor total do inventário por departamento (similar ao item anterior - considere TODOS os produtos) */
+
+function solucao12(totalInventario){
+
+    var somaInventario = (depEstoque) => listaProdutos.filter((prod) => prod.departamento.idDepto === depEstoque).reduce((soma,acc) => soma + acc.qtdEstoque * acc.preco , 0);
+    var newLista = [];
+    
+    listaProdutos.map((prod) => {
+        newLista.push({
+            id: prod.departamento.idDepto,
+            departamento : prod.departamento.nomeDepto,
+            Inventario:`${somaInventario(prod.departamento.idDepto).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`
+        });
+    });
+
+    var limpaLista = (produto, ids) => [...new Map(produto.map(item => [ids(item), item])).values()];
+    console.log(limpaLista(newLista, item => item.id));
+    return totalInventario;
+}
+
+solucao12();
+
+/* 13-  Ticket médio por departamento (similar ao item anterior, porém retornando uma lista de objetos que contenha o nome do departamento e o seu ticket médio). Este é um exercícios difícil, porém é descomplicado de ser realizado tendo claro as demais saídas até então. Verifique a possibilidade de reutilizar parte da programação ou sua lógica trabalhada. */
+
+
+function solucao13(totalEstoque){
+
+    var somaEstoque = (depEstoque) => listaProdutos.filter((prod) => prod.departamento.idDepto === depEstoque).reduce((soma,acc) => soma + acc.qtdEstoque * acc.preco , 0);
+
+    var somaInventario = (depEstoque) => listaProdutos.filter((prod) => prod.departamento.idDepto === depEstoque).reduce((soma,acc) => soma + acc.qtdEstoque * acc.preco , 0);
+    var somaTicket = 0
+    somaTicket =  (depEstoque) => listaProdutos.filter((prod) => prod.departamento.idDepto === depEstoque).reduce((soma) => soma + somaInventario / somaEstoque , 0);
+
+   
+
+    var newLista = [];
+
+    listaProdutos.map((prod) => {
+        newLista.push({
+            id: prod.departamento.idDepto,
+            departamento : prod.departamento.nomeDepto,
+            estoque: `${somaTicket(prod.departamento.idDepto).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`
+        });
+    });
+
+    var limpaLista = (produto, ids) => [...new Map(produto.map(item => [ids(item), item])).values()];
+    console.log(limpaLista(newLista, item => item.id));
+    return totalEstoque;
+}
+solucao13();
